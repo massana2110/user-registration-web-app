@@ -1,20 +1,34 @@
 <template>
 	<div class="user-container">
 		<h2 id="users-title">Usuarios</h2>
+
 		<div class="users-section">
 			<UserList />
-			<button id="btn_add_user">Agregar</button>
+			<button id="btn_add_user" @click="openForm" :disabled="showForm">
+				Agregar
+			</button>
 		</div>
+		<hr />
+		<UserForm v-show="showForm" />
 	</div>
 </template>
 
 <script>
 import UserList from './UserList';
+import UserForm from './UserForm';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
 	name: 'UsersContainer',
 	components: {
 		UserList,
+		UserForm,
+	},
+	methods: {
+		...mapMutations(['openForm']),
+	},
+	computed: {
+		...mapState(['showForm']),
 	},
 };
 </script>
@@ -24,7 +38,7 @@ export default {
 	width: 100%;
 	max-width: 720px;
 	height: 720px;
-	background-color: aquamarine;
+	background-color: #d2d6e2;
 
 	display: flex;
 	flex-direction: column;
@@ -46,5 +60,14 @@ export default {
 
 #btn_add_user {
 	margin-left: 10px;
+}
+
+hr {
+	border: none;
+	width: 554px;
+	height: 2px;
+	background-color: #d3ecff;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 </style>

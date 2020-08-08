@@ -7,12 +7,14 @@
 
 <script>
 import UsersContainer from './components/UsersContainer';
+import store from './store';
 
 export default {
 	name: 'App',
 	components: {
 		UsersContainer,
 	},
+	store,
 };
 </script>
 
@@ -30,9 +32,9 @@ export default {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #2c3e50;
-	margin-top: 60px;
+	height: 100vh;
 	display: flex;
-	flex-flow: column wrap;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
