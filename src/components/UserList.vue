@@ -5,9 +5,11 @@
 			src="../assets/icons/ilustracion_usuarios_vacios.svg"
 			alt="no_usuarios"
 		/>
-		<h3 v-for="(item, index) in users" :key="index">
-			{{ item.nombre }}
-		</h3>
+		<div v-if="users.length > 0">
+			<h3 v-for="(item, index) in users" :key="index">
+				{{ item.name }}
+			</h3>
+		</div>
 	</div>
 </template>
 

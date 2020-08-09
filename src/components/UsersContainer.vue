@@ -5,7 +5,7 @@
 		<div class="users-section">
 			<UserList />
 			<button id="btn_add_user" @click="openForm" :disabled="showForm">
-				Agregar
+				<span></span>
 			</button>
 		</div>
 		<hr />
@@ -60,6 +60,22 @@ export default {
 
 #btn_add_user {
 	margin-left: 10px;
+	width: 86px;
+	height: 86px;
+	background-image: url('../assets/icons/icono_agregar_usuario.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+}
+
+#btn_add_user span {
+	display: block;
+	width: 76px;
+	height: 76px;
+	background-color: transparent;
+	border: 1px dashed rgba(128, 128, 128, 0.3);
+	margin: auto;
 }
 
 hr {

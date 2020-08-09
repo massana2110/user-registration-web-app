@@ -7,14 +7,12 @@
 
 <script>
 import UsersContainer from './components/UsersContainer';
-import store from './store';
 
 export default {
 	name: 'App',
 	components: {
 		UsersContainer,
 	},
-	store,
 };
 </script>
 

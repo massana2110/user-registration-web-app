@@ -14,25 +14,23 @@
 		>
 		</picture-input>
 		<div>
-			<input type="text" placeholder="Nombre" />
-			<input type="text" placeholder="Apellido" />
+			<input type="text" placeholder="Nombre" v-model="newUser.name" />
+			<input type="text" placeholder="Apellido" v-model="newUser.lastname" />
 		</div>
 		<div>
-			<button @click="closeForm">Save</button>
+			<button @click="addUser">Save</button>
 		</div>
 	</div>
 </template>
 
 <script>
 import PictureInput from 'vue-picture-input';
-import { mapMutations } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
 	name: 'UserForm',
 	data() {
-		return {
-			image: '',
-		};
+		return {};
 	},
 	components: {
 		PictureInput,
@@ -47,7 +45,13 @@ export default {
 				console.log('Not supported');
 			}
 		},
-		...mapMutations(['closeForm']),
+		addUser() {
+			this.$store.dispatch('addUser');
+			this.$store.dispatch('clearUser');
+		},
+	},
+	computed: {
+		...mapState(['newUser']),
 	},
 };
 </script>
