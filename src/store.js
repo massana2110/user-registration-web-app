@@ -7,6 +7,7 @@ export default new Vuex.Store({
 	state: {
 		users: [],
 		newUser: {
+			imageData: null,
 			name: '',
 			lastname: '',
 		},
@@ -21,11 +22,13 @@ export default new Vuex.Store({
 		},
 		CLEAR_USER(state) {
 			state.newUser = {
+				imageData: null,
 				name: '',
 				lastname: '',
 			};
 		},
 		GET_USER(state, user) {
+			state.newUser.imageData = user.imageData;
 			state.newUser.name = user.name;
 			state.newUser.lastname = user.lastname;
 		},

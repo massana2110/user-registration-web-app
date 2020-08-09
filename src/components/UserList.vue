@@ -6,9 +6,7 @@
 			alt="no_usuarios"
 		/>
 		<div v-if="users.length > 0">
-			<h3 v-for="(item, index) in users" :key="index">
-				{{ item.name }}
-			</h3>
+			<img v-for="(item, index) in users" :key="index" :src="item.imageData" />
 		</div>
 	</div>
 </template>
