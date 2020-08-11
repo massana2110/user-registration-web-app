@@ -11,6 +11,8 @@ export default new Vuex.Store({
 			name: '',
 			lastname: '',
 		},
+		userSelected: 0,
+		showUserInfo: false,
 		showForm: false,
 	},
 	mutations: {

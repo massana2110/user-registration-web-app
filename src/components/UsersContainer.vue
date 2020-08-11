@@ -1,14 +1,13 @@
 <template>
 	<div class="user-container">
+		<UserInfo v-show="showUserInfo" />
 		<h2 id="users-title">Usuarios</h2>
-
 		<div class="users-section">
 			<UserList />
 			<button id="btn_add_user" @click="openForm" :disabled="showForm">
 				<span></span>
 			</button>
 		</div>
-		<hr />
 		<UserForm v-show="showForm" />
 	</div>
 </template>
@@ -16,6 +15,7 @@
 <script>
 import UserList from './UserList';
 import UserForm from './UserForm';
+import UserInfo from './UserInfo';
 import { mapState, mapMutations } from 'vuex';
 
 export default {
@@ -23,12 +23,13 @@ export default {
 	components: {
 		UserList,
 		UserForm,
+		UserInfo,
 	},
 	methods: {
 		...mapMutations(['openForm']),
 	},
 	computed: {
-		...mapState(['showForm']),
+		...mapState(['showForm', 'showUserInfo']),
 	},
 };
 </script>
@@ -76,14 +77,5 @@ export default {
 	background-color: transparent;
 	border: 1px dashed rgba(128, 128, 128, 0.3);
 	margin: auto;
-}
-
-hr {
-	border: none;
-	width: 554px;
-	height: 2px;
-	background-color: #d3ecff;
-	margin-top: 5px;
-	margin-bottom: 5px;
 }
 </style>
