@@ -27,12 +27,22 @@ export default {
 	},
 	methods: {
 		addUser() {
+			// if (this.validateForm()) {
 			this.$store.dispatch('addUser');
 			this.$store.dispatch('clearUser');
+			// } else {
+			// 	alert('Los campos de nombre o apellido no pueden estar vacios');
+			// }
+		},
+		validateForm() {
+			if (this.newUser.name === '' || this.newUser.lastname === '') {
+				return false;
+			}
+			return true;
 		},
 	},
 	computed: {
-		...mapState(['newUser']),
+		...mapState(['newUser', 'users']),
 	},
 };
 </script>

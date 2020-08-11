@@ -11,6 +11,7 @@
 			v-for="(item, index) in users"
 			:key="index"
 			@click="openUserInfo(index)"
+			:style="{ height: 'auto' }"
 		>
 			<div
 				class="hexagon"
@@ -60,7 +61,9 @@ export default {
 	},
 	methods: {
 		openUserInfo(index) {
-			this.$store.state.showUserInfo = !this.$store.state.showUserInfo;
+			if (!this.$store.state.showUserInfo) {
+				this.$store.state.showUserInfo = !this.$store.state.showUserInfo;
+			}
 			this.$store.state.userSelected = index;
 		},
 	},
@@ -79,31 +82,12 @@ export default {
 	flex-flow: row wrap;
 	justify-content: center;
 	align-items: center;
-	padding: 0px 10px;
+	padding: 0 10px;
 }
 
 #img-no-users {
 	width: 99.69px;
 	height: 78px;
-}
-
-/* .user-images {
-	width: 20.61px;
-	height: 32px;
-	object-fit: cover;
-} */
-
-.hexagonos {
-	min-width: 45px;
-	width: auto;
-	height: 48px;
-	clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0 25%);
-	background-image: url('../assets/icons/icono_hexagono.svg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .hexagon {
