@@ -27,12 +27,12 @@ export default {
 	},
 	methods: {
 		addUser() {
-			// if (this.validateForm()) {
-			this.$store.dispatch('addUser');
-			this.$store.dispatch('clearUser');
-			// } else {
-			// 	alert('Los campos de nombre o apellido no pueden estar vacios');
-			// }
+			if (this.validateForm()) {
+				this.$store.dispatch('addUser');
+				this.$store.dispatch('clearUser');
+			} else {
+				alert('Los campos de nombre o apellido no pueden estar vacios');
+			}
 		},
 		validateForm() {
 			if (this.newUser.name === '' || this.newUser.lastname === '') {
@@ -60,6 +60,7 @@ hr {
 .form-container {
 	display: flex;
 	width: 100%;
+	max-width: 720px;
 	height: 100%;
 	justify-content: center;
 	align-items: center;

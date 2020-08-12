@@ -5,9 +5,21 @@
 				class="profile-image-container"
 				v-if="users[userSelected].imageData === null"
 			>
+				<span
+					class="btn-user-info"
+					:style="{
+						'background-image': `url(${this.editUserInfo})`,
+					}"
+				></span>
 				<img :src="defaultImage" alt="default-picture" />
 			</div>
 			<div class="profile-image-container" v-else>
+				<span
+					class="btn-user-info"
+					:style="{
+						'background-image': `url(${this.editUserInfo})`,
+					}"
+				></span>
 				<img
 					:style="{
 						'object-fit': 'cover',
@@ -19,18 +31,19 @@
 			<p><b>Nombre:</b> {{ users[userSelected].name }}</p>
 			<p><b>Apellido:</b> {{ users[userSelected].lastname }}</p>
 		</div>
-		<!-- <h3>{{ users[userSelected].name }}</h3> -->
 	</div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import defaultImage from '../assets/icons/icono_perfil.svg';
+import editUserInfo from '../assets/icons/icono_editar.svg';
 
 export default {
 	data() {
 		return {
 			defaultImage,
+			editUserInfo,
 		};
 	},
 	computed: {
@@ -48,6 +61,7 @@ export default {
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
+	position: relative;
 }
 
 .user-info-container {
@@ -65,5 +79,14 @@ img {
 	width: 172px;
 	height: 149px;
 	border-radius: 10px;
+}
+
+.btn-user-info {
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 5%;
+	right: 5%;
 }
 </style>

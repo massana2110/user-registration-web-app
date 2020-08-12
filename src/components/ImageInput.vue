@@ -1,7 +1,6 @@
 <template>
 	<div
 		class="image-input"
-		@click="chooseImage"
 		:style="{
 			'background-image': `url(${this.$store.state.newUser.imageData})`,
 		}"
@@ -11,19 +10,8 @@
 		<span v-if="!this.$store.state.newUser.imageData" class="placeholder">
 			<img src="../assets/icons/icono_perfil.svg" alt="icon-profile" />
 		</span>
-		<!-- <input
-			class="file-input"
-			type="file"
-			ref="fileInput"
-			@change="onSelectFile"
-		/> -->
-		<input
-			ref="fileInput"
-			id="file"
-			class="file-input"
-			type="file"
-			@input="onSelectFile"
-		/>
+
+		<input class="file-input" type="file" @change="this.onFileChange" />
 	</div>
 </template>
 
@@ -36,21 +24,6 @@ export default {
 		};
 	},
 	methods: {
-		chooseImage() {
-			this.$refs.fileInput.click();
-		},
-		onSelectFile() {
-			const input = this.$refs.fileInput;
-			const files = input.files;
-			if (files && files[0]) {
-				const reader = new FileReader();
-				reader.onload = e => {
-					this.$store.state.newUser.imageData = e.target.result;
-				};
-				reader.readAsDataURL(files[0]);
-				this.$emit('input', files[0]);
-			}
-		},
 		onFileChange(e) {
 			let files = e.target.files || e.dataTransfer.files;
 			if (!files.length) return;
@@ -61,10 +34,8 @@ export default {
 
 			reader.onload = e => {
 				this.$store.state.newUser.imageData = e.target.result;
-				// this.$store.state.newUser.imageData = this.image;
 			};
 			reader.readAsDataURL(file);
-			// this.$emit('input', file);
 		},
 	},
 };
@@ -81,6 +52,7 @@ export default {
 	align-items: center;
 	justify-content: center;
 	border-radius: 10px;
+	position: relative;
 }
 
 .placeholder {
@@ -96,6 +68,11 @@ export default {
 
 .file-input {
 	cursor: pointer;
-	display: none;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 </style>
