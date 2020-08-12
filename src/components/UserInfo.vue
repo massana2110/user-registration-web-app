@@ -8,8 +8,9 @@
 				<span
 					class="btn-user-info"
 					:style="{
-						'background-image': `url(${this.editUserInfo})`,
+						'background-image': `url(${this.editUserInfoIcon})`,
 					}"
+					@click="edit(users[userSelected])"
 				></span>
 				<img :src="defaultImage" alt="default-picture" />
 			</div>
@@ -19,6 +20,7 @@
 					:style="{
 						'background-image': `url(${this.editUserInfo})`,
 					}"
+					@click="edit(users[userSelected])"
 				></span>
 				<img
 					:style="{
@@ -37,17 +39,22 @@
 <script>
 import { mapState } from 'vuex';
 import defaultImage from '../assets/icons/icono_perfil.svg';
-import editUserInfo from '../assets/icons/icono_editar.svg';
+import editUserInfoIcon from '../assets/icons/icono_editar.svg';
 
 export default {
 	data() {
 		return {
 			defaultImage,
-			editUserInfo,
+			editUserInfoIcon,
 		};
 	},
 	computed: {
 		...mapState(['users', 'userSelected']),
+	},
+	methods: {
+		edit(user) {
+			this.$store.dispatch('editUser', user);
+		},
 	},
 };
 </script>
