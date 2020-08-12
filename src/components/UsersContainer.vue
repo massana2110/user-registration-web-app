@@ -66,8 +66,12 @@ export default {
 	background-image: url('../assets/icons/icono_agregar_usuario.svg');
 	background-position: center;
 	background-repeat: no-repeat;
+	background-color: #f1f4f7;
 	border: none;
 	cursor: pointer;
+	border-radius: 10px;
+	box-shadow: -4px -4px 15px 0px rgba(255, 255, 255, 0.5),
+		8px 8px 10px 0px rgba(159, 166, 173, 0.15);
 }
 
 #btn_add_user span {
@@ -77,5 +81,12 @@ export default {
 	background-color: transparent;
 	border: 1px dashed rgba(128, 128, 128, 0.3);
 	margin: auto;
+	border-radius: 10px;
+}
+
+#btn_add_user:disabled {
+	box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+		inset -8px -4px 15px 0px rgba(255, 255, 255, 1),
+		0px -4px 10px 0px rgba(0, 0, 0, 0.1);
 }
 </style>

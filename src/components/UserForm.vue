@@ -30,6 +30,7 @@ export default {
 			if (this.validateForm()) {
 				this.$store.dispatch('addUser');
 				this.$store.dispatch('clearUser');
+				this.$store.state.showForm = false;
 			} else {
 				alert('Los campos de nombre o apellido no pueden estar vacios');
 			}
@@ -98,5 +99,7 @@ hr {
 	border: none;
 	cursor: pointer;
 	border-radius: 10px;
+	box-shadow: -4px -4px 15px 0px rgba(255, 255, 255, 0.5),
+		8px 8px 10px 0px rgba(159, 166, 173, 0.15);
 }
 </style>

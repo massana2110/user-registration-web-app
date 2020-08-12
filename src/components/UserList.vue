@@ -83,6 +83,8 @@ export default {
 	justify-content: center;
 	align-items: center;
 	padding: 0 10px;
+	box-shadow: -4px -4px 15px 0px rgba(255, 255, 255, 0.5),
+		8px 8px 10px 0px rgba(159, 166, 173, 0.15);
 }
 
 #img-no-users {
@@ -112,7 +114,6 @@ export default {
 	left: 4.59px;
 }
 
-/*counter transform the bg image on the caps*/
 .hexTop:after,
 .hexBottom:after {
 	content: '';

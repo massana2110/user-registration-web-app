@@ -14,11 +14,12 @@
 				></span>
 				<img :src="defaultImage" alt="default-picture" />
 			</div>
+
 			<div class="profile-image-container" v-else>
 				<span
 					class="btn-user-info"
 					:style="{
-						'background-image': `url(${this.editUserInfo})`,
+						'background-image': `url(${this.editUserInfoIcon})`,
 					}"
 					@click="edit(users[userSelected])"
 				></span>
@@ -53,6 +54,9 @@ export default {
 	},
 	methods: {
 		edit(user) {
+			(this.$store.state.showUserInfo = false),
+				(this.$store.state.userSelected = 0);
+			this.$store.state.showForm = true;
 			this.$store.dispatch('editUser', user);
 		},
 	},
